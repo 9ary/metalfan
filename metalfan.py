@@ -72,7 +72,6 @@ while True:
                 heat = ((temp - fg.temp_min) / (fg.temp_max - fg.temp_min)) ** 2
                 pwm = int((fg.pwm_max - fg.pwm_min) * heat + fg.pwm_min)
 
-            print(pwm)
             for ctl, speed in zip(fg.pwm, fg.speed):
                 if pwm > fg.pwm_stop and cat(f"{speed}_input") < fg.speed_min:
                     echo(fg.pwm_start, ctl)
