@@ -1,0 +1,26 @@
+interval = 1
+
+[hwmon.superio]
+path = "/sys/devices/platform/nct6775.656/hwmon/hwmon*"
+
+[hwmon.gpu]
+path = "/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0/hwmon/hwmon*"
+probes = ["temp1"]
+
+# Case fans
+[[fangroup]]
+probe = "gpu/temp1"
+temp_min = 60
+temp_max = 90
+speed = ["superio/fan3", "superio/fan4"]
+speed_min = 310
+pwm = ["superio/pwm3", "superio/pwm4"]
+pwm_stop = 0
+pwm_start = 80
+pwm_min = 60
+pwm_max = 153
+
+# AIO pump
+[[fangroup]]
+pwm = ["superio/pwm1"]
+pwm_fixed = 100

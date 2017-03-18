@@ -1,0 +1,9 @@
+[Unit]
+Description=Fan control script
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/metalfan
+
+[Install]
+WantedBy=multi-user.target
