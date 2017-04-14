@@ -66,7 +66,7 @@ while True:
 
             if temp < fg.temp_min:
                 pwm = fg.pwm_stop
-            elif temp > fg.temp_max:
+            elif temp >= fg.temp_max:
                 pwm = fg.pwm_max
             else:
                 heat = ((temp - fg.temp_min) / (fg.temp_max - fg.temp_min)) ** 2
