@@ -7,9 +7,16 @@ import time
 from attr import attrs, attrib
 import toml
 
+def wait_for_monitor(p):
+    print(f"Waiting for {p}...")
+    g = []
+    while not g:
+        g = glob.glob(p)
+    return g[0]
+
 @attrs
 class Hwmon():
-    path = attrib(convert = lambda p: glob.glob(p)[0])
+    path = attrib(converter = wait_for_monitor)
     probes = attrib(default = [])
 
 @attrs
