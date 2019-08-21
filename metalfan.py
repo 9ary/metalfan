@@ -59,6 +59,8 @@ for fg in fangroups:
         if fg.pwm_fixed >= 0:
             echo(fg.pwm_fixed, pwm)
 
+print("Starting polling loop...")
+
 while True:
     # Gather temps
     for name, hm in hwmons.items():
